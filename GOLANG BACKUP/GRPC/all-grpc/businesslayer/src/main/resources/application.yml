@@ -1,0 +1,8 @@
+
+grpc:
+  server:
+    port: 9091
+  client:
+    grpc-ca-service:
+      address: static://localhost:9098
+      negotiation-type: plaintext

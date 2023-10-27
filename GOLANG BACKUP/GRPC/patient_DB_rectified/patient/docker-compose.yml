@@ -1,0 +1,10 @@
+version: "3"
+services:
+  db:
+    build:
+      context: .
+      dockerfile: postgres_patient.dockerfile
+    ports:
+      - 5440:5432
+    container_name: postgres_patient
+    image: postgres_patient:1.0.0

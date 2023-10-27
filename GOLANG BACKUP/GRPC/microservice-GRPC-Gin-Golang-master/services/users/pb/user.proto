@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package users;
+
+import "google/protobuf/timestamp.proto";
+// import "micr-go/core/pb/tagger.proto";
+// import "micr-go/core/pb/objectid.proto";
+
+message User {
+  // pmongo.ObjectId id = 1 [(tagger.tags) = "bson:\"_id,omitempty\"" ];
+  string id = 1;
+  string username = 2;
+  string password = 3;
+  string email = 4;
+  string address = 5;
+  string phone = 6;
+  google.protobuf.Timestamp createdAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
+}
+
+message FindAllRequest {
+  string page = 1;
+  string per_page = 2;
+}
+
+message FindAllResponse {
+  bool status = 1;
+  string message = 2;
+  repeated User data = 3;
+}
+
+message CreateRequest {
+  User user = 1;
+}
+
+message CreateResponse {
+  bool status = 1;
+  string message = 2;
+  User user = 3;
+  string token = 4;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message UpdateUserRequest {
+  User user = 2;
+}
+
+message UpdateUserResponse {
+  bool status = 1;
+  string message = 2;
+}
+
+// message DeleteRequest {
+//   string id = 1;
+// }
+
+// message DeleteResponse {
+//   string status = 1;
+//   string message = 2;
+// }
+
+message GetOneRequest {
+  string id = 1;
+  string email = 2;
+  string username = 3;
+}
+
+message GetOneResponse {
+  bool status = 1;
+  string message = 2;
+  User data = 3;
+}
+
+service Users {
+  rpc FindAll(FindAllRequest) returns (FindAllResponse);
+  rpc FineOne(GetOneRequest) returns (GetOneResponse);
+  rpc CreateUser(CreateRequest) returns (CreateResponse);
+  rpc LoginUser(LoginRequest) returns (CreateResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  // rpc DeleteUser(DeleteRequest) returns (DeleteResponse);
+    
+}

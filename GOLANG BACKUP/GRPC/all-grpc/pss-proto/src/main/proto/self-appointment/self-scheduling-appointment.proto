@@ -1,0 +1,80 @@
+syntax="proto3";
+
+package com.ca.selfscheduling;
+option java_multiple_files = true;
+
+message Practice{
+  int64 practiceId=1;
+  string name=2;
+}
+message Provider{
+  int64 providerId=1;
+  string name=2;
+}
+
+message Address{
+  int64 addressId=1;
+  string addressLine1=2;
+  string addressLine2=3;
+  string city=4;
+  string state=5;
+  string zipcode=6;
+  string country=7;
+  double lat=8;
+  double lng=9;
+}
+
+message Location{
+  int64 locationId=1;
+  string name=2;
+  Address address=3;
+}
+
+message AppointmentDetail{
+  int64 appointmentId=1;
+  string status=2;
+  string method=3;
+  string appointmentType=4;
+  string reason=5;
+  string start=6;
+  string comment=7;
+  Practice practice=8;
+  Provider provider=9;
+  Location location=10;
+}
+
+message AppointmentDetailRequest{
+  int64 appointmentId=1;
+}
+
+message AppointmentRequestBody{
+  string method=1;
+  string appointmentType=2;
+  string datetime=3;
+  string note=4;
+  string sourceOfBooking=5;
+  int64 providerId=6;
+  int64 locationId=7;
+}
+
+message AppointmentRequestParam{
+  int64 practiceId=1;
+  int64 memberId=2;
+}
+
+message AppointmentResponse{
+  int64 appointmentId=1;
+}
+
+message AppointmentRequest{
+  AppointmentRequestParam appointmentRequestParam=1;
+  AppointmentRequestBody appointmentRequestBody=2;
+}
+
+
+service AppointmentService{
+  rpc getAppointmentDetail(AppointmentDetailRequest) returns (AppointmentDetail) {};
+
+  rpc createAppointment(AppointmentRequest) returns (AppointmentResponse) {};
+
+}

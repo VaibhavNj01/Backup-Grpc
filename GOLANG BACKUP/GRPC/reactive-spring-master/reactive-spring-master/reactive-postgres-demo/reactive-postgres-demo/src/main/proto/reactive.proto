@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.reactive.reactivepostgresdemo;
+
+option java_multiple_files = true;
+
+message BookRequest {
+  int64 bookId = 1;
+  string bookName = 2;
+  string bookAuthor = 3;
+}
+
+service BookService {
+  rpc GetBookInfo (BookResponse) returns (BookRequest);
+  rpc CreateBook (BookRequest) returns (BookResponse);
+  rpc UpdateBook (BookResponse) returns (BookRequest);
+
+}
+
+message BookResponse {
+  int64 bookId = 1;
+}
+
