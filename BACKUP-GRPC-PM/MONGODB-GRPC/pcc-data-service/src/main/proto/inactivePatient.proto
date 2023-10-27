@@ -1,0 +1,197 @@
+syntax = "proto3";
+
+package com.optiviohealth.pccdataservice;
+
+option java_multiple_files = true;
+
+message PatientRequest{
+  string first_name = 1;
+  string middle_name = 2;
+  string last_name = 3;
+ string dob = 4;
+  string email = 5;
+  string mobile_phone = 6;
+  string work_phone = 7;
+  string home_phone = 8;
+  string gender = 9;
+  string marital_status = 10;
+  string home_address_1 = 11;
+  string home_address_2 = 12;
+  string home_city = 13;
+  string home_state = 14;
+  string home_country = 15;
+  string home_zip_code = 16;
+  string practice_id = 17;
+  string external_patient_id = 18;
+  string created_by = 19;
+  string updated_by = 21;
+  bool is_active = 23;
+  string emergency_contact = 24;
+  string ssn = 25;
+  string work_address_1 = 26;
+  string work_address_2 = 27;
+  string work_city = 28;
+  string work_state = 29;
+  string work_country = 30;
+  string work_zip_code = 31;
+  string guarantor_first_name = 32;
+  string guarantor_last_name = 33;
+ string guarantor_dob = 34;
+  string guarantor_ssn = 35;
+  string language = 36;
+}
+
+message PatientResponse{
+  string id = 1;
+  string message = 2;
+}
+
+message Patient {
+
+  string id =1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string dob = 5;
+  string email = 6;
+  string mobile_phone = 7;
+  string work_phone = 8;
+  string home_phone = 9;
+  string gender = 10;
+  string marital_status = 11;
+  string home_address_1 = 12;
+  string home_address_2 = 13;
+  string home_city = 14;
+  string home_state = 15;
+  string home_country = 16;
+  string home_zip_code = 17;
+  string practice_id = 18;
+  string external_patient_id = 19;
+  string created_by = 20;
+  string created_tsz = 21;
+  string updated_by = 22;
+
+  bool is_active = 24;
+  string emergency_contact = 25;
+  string ssn = 26;
+  string work_address_1 = 27;
+  string work_address_2 = 28;
+  string work_city = 29;
+  string work_state = 30;
+  string work_country = 31;
+  string work_zip_code = 32;
+  string guarantor_first_name = 33;
+  string guarantor_last_name = 34;
+  string guarantor_dob = 35;
+  string guarantor_ssn = 36;
+  string language = 37;
+}
+
+message GetPatientRequest{
+  string id = 1;
+
+}
+
+message UpdatePatientRequest{
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string dob = 5;
+  string email = 6;
+  string mobile_phone = 7;
+  string work_phone = 8;
+  string home_phone = 9;
+  string gender = 10;
+  string marital_status = 11;
+  string home_address_1 = 12;
+  string home_address_2 = 13;
+  string home_city = 14;
+  string home_state = 15;
+  string home_country = 16;
+  string home_zip_code = 17;
+  string practice_id = 18;
+  string external_patient_id = 19;
+  string created_by = 20;
+  string updated_by = 21;
+  bool is_active = 23;
+  string emergency_contact = 24;
+  string ssn = 25;
+  string work_address_1 = 26;
+  string work_address_2 = 27;
+  string work_city = 28;
+  string work_state = 29;
+  string work_country = 30;
+  string work_zip_code = 31;
+  string guarantor_first_name = 32;
+  string guarantor_last_name = 33;
+  string guarantor_dob = 34;
+  string guarantor_ssn = 35;
+  string language = 36;
+
+
+}
+message UpdatePatientResponse{
+  string id = 1;
+  string message =2;
+}
+service PatientService {
+
+  rpc CreateNewPatient(PatientRequest) returns (PatientResponse);
+
+  rpc GetInActivePatientDetailsByInactiveId(PatientInactiveRequestByInactiveId) returns (PatientDetails);
+  rpc GetInactivePatientDetails (PatientInactiveRequest) returns (PatientDetails);
+
+  rpc UpdateInactivePatient(UpdatePatientRequest) returns (UpdatePatientResponse);
+
+
+
+}
+
+message PatientInactiveRequestByInactiveId {
+  string id =1;
+}
+
+message PatientDetails{
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string dob = 5;
+  string email = 6;
+  string mobile_phone = 7;
+  string work_phone = 8;
+  string home_phone = 9;
+  string gender = 10;
+  string marital_status = 11;
+  string home_address_1 = 12;
+  string home_address_2 = 13;
+  string home_city = 14;
+  string home_state = 15;
+  string home_country = 16;
+  string home_zip_code = 17;
+  string practice_id = 18;
+  string external_patient_id = 19;
+  string created_by = 20;
+  string updated_by = 21;
+  bool is_active = 23;
+  string emergency_contact = 24;
+  string ssn = 25;
+  string work_address_1 = 26;
+  string work_address_2 = 27;
+  string work_city = 28;
+  string work_state = 29;
+  string work_country = 30;
+  string work_zip_code = 31;
+  string guarantor_first_name = 32;
+  string guarantor_last_name = 33;
+  string guarantor_dob = 34;
+  string guarantor_ssn = 35;
+  string language = 36;
+
+}
+
+message PatientInactiveRequest {
+  string external_patient_id= 1;
+  string practice_id =2;
+}

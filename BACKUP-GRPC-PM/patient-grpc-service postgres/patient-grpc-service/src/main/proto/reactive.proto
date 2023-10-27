@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package com.optiviohealth;
+
+option java_multiple_files = true;
+
+
+service PatientService {
+
+  rpc CreatePatient(PatientEntity) returns (PatientResponse);
+
+  rpc GetPatientById(GetPatientByPatientInactiveId) returns (GetPatientResponse);
+
+
+}
+
+message PatientEntity {
+
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 6;
+  int64 mobilePhone = 7;
+  string gender = 10;
+  string address_Line_1 = 13;
+  string address_line_2 = 14;
+  string city = 15;
+  string state = 16;
+  string country = 17;
+  string zipcode = 18;
+  int64 external_patient_id = 19;
+  int64 practice_id = 20;
+
+}
+
+
+message PatientResponse {
+  int64 patientInactive_id = 1;
+}
+
+message GetPatientByPatientInactiveId {
+  int64 patientInactive_id = 1;
+}
+
+message GetPatientResponse {
+
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 6;
+  int64 mobilePhone = 7;
+  string gender = 10;
+  string address_Line_1 = 13;
+  string address_line_2 = 14;
+  string city = 15;
+  string state = 16;
+  string country = 17;
+  string zipcode = 18;
+  int64 external_patient_id = 19;
+  int64 practice_id = 20;
+}
